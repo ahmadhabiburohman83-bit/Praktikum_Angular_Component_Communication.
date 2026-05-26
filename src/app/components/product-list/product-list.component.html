@@ -1,0 +1,47 @@
+<h1>TEST BERHASIL</h1>
+<div class="product-list-container">
+  <h1>Product List - @Input Demo</h1>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button (click)="toggleDescriptions()">
+      {{ showDescriptions ? 'Hide' : 'Show' }} Descriptions
+    </button>
+
+    <div class="style-buttons">
+      <button (click)="changeStyle('default')" [class.active]="cardStyle === 'default'">
+        Default
+      </button>
+      <button (click)="changeStyle('compact')" [class.active]="cardStyle === 'compact'">
+        Compact
+      </button>
+      <button (click)="changeStyle('featured')" [class.active]="cardStyle === 'featured'">
+        Featured
+      </button>
+    </div>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="product-grid">
+    <!-- Pass data ke child component via @Input -->
+    <app-product-card
+      *ngFor="let product of products"
+      [product]="product"
+      [showDescription]="showDescriptions"
+      [cardStyle]="cardStyle"
+      (productSelected)="handleProductSelected($event)"
+      (addToCart)="handleAddToCart($event)"
+      (viewDetails)="handleViewDetails($event)"
+    >
+    </app-product-card>
+  </div>
+
+  <div class="info-box">
+    <h3>Bagaimana @Input Bekerja?</h3>
+    <ul>
+      <li><code>[product]="product"</code> - Pass product object ke child</li>
+      <li><code>[showDescription]="showDescriptions"</code> - Pass boolean</li>
+      <li><code>[cardStyle]="cardStyle"</code> - Pass string untuk styling</li>
+    </ul>
+  </div>
+</div>

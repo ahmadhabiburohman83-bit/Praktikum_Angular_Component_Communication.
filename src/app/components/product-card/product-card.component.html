@@ -1,0 +1,35 @@
+<div class="product-card" [class]="customStyle" (click)="onCardClick()">
+  <div class="product-image">
+    <img [src]="product.imageUrl" [alt]="product.name" />
+    <span class="badge" *ngIf="!product.inStock">Out of Stock</span>
+    <span class="badge in-stock" *ngIf="product.inStock">In Stock</span>
+  </div>
+
+  <div class="product-content">
+    <h3>{{ product.name }}</h3>
+
+    <div class="rating">
+      <span *ngFor="let star of getStars(product.rating)" class="star">
+        {{ star }}
+      </span>
+      <span class="rating-value">({{ product.rating }})</span>
+    </div>
+
+    <p class="category">{{ product.category }}</p>
+
+    <p class="description" *ngIf="showDescription">
+      {{ product.description }}
+    </p>
+
+    <div class="price-section">
+      <div class="card-actions" (click)="$event.stopPropagation()">
+        <button class="btn-cart" (click)="onAddToCart()" [disabled]="!product.inStock">
+          Add to Cart
+        </button>
+
+        <button class="btn-details" (click)="onViewDetails()">Details</button>
+      </div>
+      <span class="price">{{ formatPrice(product.price) }}</span>
+    </div>
+  </div>
+</div>

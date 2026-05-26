@@ -1,0 +1,157 @@
+.product-list-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+h1 {
+  color: #00897b;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.controls {
+  background: #e0f2f1;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+button {
+  background: #00897b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+button:hover {
+  background: #00695c;
+}
+button.active {
+  background: #004d40;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.style-buttons {
+  display: flex;
+  gap: 10px;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+.info-box {
+  background: #fff9c4;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 5px solid #ffa000;
+}
+.info-box h3 {
+  color: #f57f17;
+  margin-top: 0;
+}
+.info-box ul {
+  margin: 10px 0;
+}
+.info-box code {
+  background: #fff3e0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: #e65100;
+}
+.cart-summary {
+  background: #e8f5e9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 5px solid #388e3c;
+}
+.cart-summary h3 {
+  margin-top: 0;
+  color: #388e3c;
+}
+.cart-items {
+  margin: 15px 0;
+}
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+.btn-remove {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+}
+.btn-remove:hover {
+  background: #b71c1c;
+}
+.cart-total {
+  text-align: right;
+  padding-top: 10px;
+  border-top: 2px solid #388e3c;
+  font-size: 18px;
+}
+.selected-info {
+  background: #e1f5fe;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.event-log {
+  background: #f3e5f5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+  border-left: 5px solid #7b1fa2;
+}
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.log-header h3 {
+  margin: 0;
+  color: #7b1fa2;
+}
+.log-content {
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.log-entry {
+  padding: 8px;
+  margin-bottom: 5px;
+  background: #f9fbe7;
+  border-left: 3px solid #9c27b0;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+}
+.log-empty {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 20px;
+}
