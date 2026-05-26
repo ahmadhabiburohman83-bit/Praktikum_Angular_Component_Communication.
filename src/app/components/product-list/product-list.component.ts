@@ -19,7 +19,7 @@ export class ProductListComponent {
       name: 'Laptop Gaming ASUS ROG',
       price: 25000000,
       description: 'Laptop gaming dengan processor Intel Core i9 dan RTX 4080',
-      imageUrl: '/assets/leptop.webp',
+      imageUrl: 'assets/leptop.webp',
       category: 'Electronics',
       inStock: true,
       rating: 5
@@ -29,7 +29,7 @@ export class ProductListComponent {
       name: 'Mouse Wireless Logitech',
       price: 450000,
       description: 'Mouse wireless ergonomis dengan battery tahan lama',
-      imageUrl: '/assets/mouse.jpg',
+      imageUrl: 'assets/mouse.jpg',
       category: 'Accessories',
       inStock: true,
       rating: 4
@@ -39,7 +39,7 @@ export class ProductListComponent {
       name: 'Keyboard Mechanical', 
       price: 1200000, 
       description: 'Mechanical keyboard dengan RGB lighting', 
-      imageUrl: '/assets/keyboard.jpg', 
+      imageUrl: 'assets/keyboard.jpg', 
       category: 'Accessories', 
       inStock: false, 
       rating: 5 
@@ -49,7 +49,7 @@ export class ProductListComponent {
       name: 'Monitor 4K LG', 
       price: 8500000, 
       description: 'Monitor 27 inch dengan resolusi 4K dan HDR', 
-      imageUrl: '/assets/monitor.jpg', 
+      imageUrl: 'assets/monitor.jpg', 
       category: 'Electronics', 
       inStock: true, 
       rating: 4 

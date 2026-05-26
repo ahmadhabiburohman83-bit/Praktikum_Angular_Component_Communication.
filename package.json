@@ -8,9 +8,8 @@
     "build:github": "ng build --base-href /angular-communication-praktikum/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:prod": "ng build --configuration production --base-href \"/Praktikum_Angular_Component_Communication/\"",
-    "deploy": "npx angular-cli-ghpages --dir=dist/angular-communication-praktikum/browser"
-    
+    "build:prod": "ng build --configuration production --base-href /Praktikum_Angular_Component_Communication/",
+    "deploy": "ng build --base-href /Praktikum_Angular_Component_Communication/ && npx angular-cli-ghpages --dir=dist/angular-communication-praktikum/browser"
   },
   "private": true,
   "packageManager": "npm@10.9.8",
