@@ -1,47 +1,109 @@
-<h1>TEST BERHASIL</h1>
 <div class="product-list-container">
-  <h1>Product List - @Input Demo</h1>
+  <h1>Product List - @Input & @Output Demo (With TUGAS)</h1>
+
+  <!-- Cart Summary -->
+  <div class="cart-summary" *ngIf="cartItems.length > 0">
+    <h3>🛒 Shopping Cart ({{ cartItems.length }} items)</h3>
+    <div class="cart-items">
+      <div class="cart-item" *ngFor="let item of cartItems">
+        <span>{{ item.name }}</span>
+        <span>Rp {{ item.price.toLocaleString('id-ID') }}</span>
+        <button (click)="removeFromCart(item)" class="btn-remove">×</button>
+      </div>
+    </div>
+    <div class="cart-total">
+      <strong>Total: Rp {{ getTotalCartPrice().toLocaleString('id-ID') }}</strong>
+    </div>
+  </div>
+
+  <!-- TUGAS 2: Comparison & Stats -->
+  <div class="stats-summary">
+    <div class="stat-box">
+      <strong>Total Likes:</strong> {{ totalLikes }}
+    </div>
+    <div class="stat-box">
+      <strong>Total Quantity Changes:</strong> {{ totalQuantity }}
+    </div>
+  </div>
+
+  <div class="comparison-summary" *ngIf="comparedProducts.length > 0">
+    <h3>⚖️ Comparison ({{ comparedProducts.length }}/2) <button (click)="clearComparison()" class="btn-clear">Clear</button></h3>
+    <div class="comparison-items">
+      <div class="compare-item" *ngFor="let item of comparedProducts">
+        <strong>{{ item.name }}</strong><br>
+        Price: Rp {{ item.price.toLocaleString('id-ID') }}<br>
+        Rating: {{ item.rating }}/5
+      </div>
+    </div>
+  </div>
+
+  <!-- Selected Product Info -->
+  <div class="selected-info" *ngIf="selectedProduct">
+    <p><strong>Selected Product:</strong> {{ selectedProduct.name }}</p>
+  </div>
 
   <!-- Controls -->
   <div class="controls">
     <button (click)="toggleDescriptions()">
       {{ showDescriptions ? 'Hide' : 'Show' }} Descriptions
     </button>
+    <button (click)="toggleRating()">
+      {{ showRating ? 'Hide' : 'Show' }} Ratings
+    </button>
 
     <div class="style-buttons">
-      <button (click)="changeStyle('default')" [class.active]="cardStyle === 'default'">
-        Default
-      </button>
-      <button (click)="changeStyle('compact')" [class.active]="cardStyle === 'compact'">
-        Compact
-      </button>
-      <button (click)="changeStyle('featured')" [class.active]="cardStyle === 'featured'">
-        Featured
-      </button>
+      <button (click)="changeStyle('default')" [class.active]="cardStyle === 'default'">Default</button>
+      <button (click)="changeStyle('compact')" [class.active]="cardStyle === 'compact'">Compact</button>
+      <button (click)="changeStyle('featured')" [class.active]="cardStyle === 'featured'">Featured</button>
+    </div>
+
+    <!-- TUGAS 1: Size controls -->
+    <div class="style-buttons">
+      <button (click)="changeSize('small')" [class.active]="cardSize === 'small'">Small</button>
+      <button (click)="changeSize('medium')" [class.active]="cardSize === 'medium'">Medium</button>
+      <button (click)="changeSize('large')" [class.active]="cardSize === 'large'">Large</button>
+    </div>
+
+    <!-- TUGAS 1: Discount -->
+    <div class="discount-control">
+      <label>Global Discount (%): </label>
+      <input type="number" min="0" max="100" [value]="discountPercentage" (input)="discountPercentage = $any($event.target).value">
     </div>
   </div>
 
-  <!-- Product Grid -->
+  <!-- Product Grid dengan Event Handlers -->
   <div class="product-grid">
-    <!-- Pass data ke child component via @Input -->
     <app-product-card
       *ngFor="let product of products"
       [product]="product"
       [showDescription]="showDescriptions"
       [cardStyle]="cardStyle"
+      [discountPercentage]="discountPercentage"
+      [cardSize]="cardSize"
+      [showRating]="showRating"
       (productSelected)="handleProductSelected($event)"
       (addToCart)="handleAddToCart($event)"
       (viewDetails)="handleViewDetails($event)"
-    >
+      (productLiked)="handleProductLiked($event)"
+      (quantityChanged)="handleQuantityChanged($event)"
+      (productCompared)="handleProductCompared($event)">
     </app-product-card>
   </div>
 
-  <div class="info-box">
-    <h3>Bagaimana @Input Bekerja?</h3>
-    <ul>
-      <li><code>[product]="product"</code> - Pass product object ke child</li>
-      <li><code>[showDescription]="showDescriptions"</code> - Pass boolean</li>
-      <li><code>[cardStyle]="cardStyle"</code> - Pass string untuk styling</li>
-    </ul>
+  <!-- Event Log -->
+  <div class="event-log">
+    <div class="log-header">
+      <h3>📜 Event Log</h3>
+      <button (click)="clearEventLog()">Clear</button>
+    </div>
+    <div class="log-content">
+      <div *ngFor="let event of eventLog" class="log-entry">
+        {{ event }}
+      </div>
+      <div *ngIf="eventLog.length === 0" class="log-empty">
+        No events yet. Interact with products to see events here.
+      </div>
+    </div>
   </div>
+
 </div>

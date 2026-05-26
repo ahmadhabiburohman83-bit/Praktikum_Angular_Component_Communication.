@@ -130,3 +130,77 @@ h3 {
 .btn-details:hover {
  background: #1976D2;
 }
+
+/* TUGAS CSS */
+.badge.discount {
+  top: 10px;
+  right: auto;
+  left: 10px;
+  background: #ff5722;
+}
+
+.price.has-discount {
+  text-decoration: line-through;
+  color: #9e9e9e;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.price.discounted-price {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.size-small .product-image { height: 120px; }
+.size-small h3 { font-size: 14px; }
+.size-small .price { font-size: 18px; }
+
+.size-large .product-image { height: 280px; }
+.size-large h3 { font-size: 22px; }
+.size-large .price { font-size: 28px; }
+
+.extra-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-selector button {
+  background: #eee;
+  border: 1px solid #ccc;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.quantity-selector button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+
+.btn-icon:hover {
+  transform: scale(1.2);
+}

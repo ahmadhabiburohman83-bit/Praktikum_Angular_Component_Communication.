@@ -1,14 +1,15 @@
-<div class="product-card" [class]="customStyle" (click)="onCardClick()">
+<div class="product-card" [ngClass]="[customStyle, 'size-' + cardSize]" (click)="onCardClick()">
   <div class="product-image">
     <img [src]="product.imageUrl" [alt]="product.name" />
     <span class="badge" *ngIf="!product.inStock">Out of Stock</span>
     <span class="badge in-stock" *ngIf="product.inStock">In Stock</span>
+    <span class="badge discount" *ngIf="discountPercentage > 0">-{{ discountPercentage }}%</span>
   </div>
 
   <div class="product-content">
     <h3>{{ product.name }}</h3>
 
-    <div class="rating">
+    <div class="rating" *ngIf="showRating">
       <span *ngFor="let star of getStars(product.rating)" class="star">
         {{ star }}
       </span>
@@ -22,14 +23,33 @@
     </p>
 
     <div class="price-section">
-      <div class="card-actions" (click)="$event.stopPropagation()">
-        <button class="btn-cart" (click)="onAddToCart()" [disabled]="!product.inStock">
-          Add to Cart
-        </button>
+      <span class="price" [class.has-discount]="discountPercentage > 0">
+        {{ formatPrice(product.price) }}
+      </span>
+      <span class="price discounted-price" *ngIf="discountPercentage > 0">
+        {{ formatPrice(discountedPrice) }}
+      </span>
+    </div>
 
-        <button class="btn-details" (click)="onViewDetails()">Details</button>
+    <!-- TUGAS 2: Actions & Quantity -->
+    <div class="extra-actions" (click)="$event.stopPropagation()">
+      <div class="quantity-selector">
+        <button (click)="decreaseQuantity()" [disabled]="quantity <= 1">-</button>
+        <span>{{ quantity }}</span>
+        <button (click)="increaseQuantity()">+</button>
       </div>
-      <span class="price">{{ formatPrice(product.price) }}</span>
+      <div class="icon-actions">
+        <button class="btn-icon" (click)="onLike()" title="Like">❤️</button>
+        <button class="btn-icon" (click)="onCompare()" title="Compare">⚖️</button>
+      </div>
+    </div>
+
+    <div class="card-actions" (click)="$event.stopPropagation()">
+      <button class="btn-cart" (click)="onAddToCart()" [disabled]="!product.inStock">
+        Add to Cart
+      </button>
+
+      <button class="btn-details" (click)="onViewDetails()">Details</button>
     </div>
   </div>
 </div>
